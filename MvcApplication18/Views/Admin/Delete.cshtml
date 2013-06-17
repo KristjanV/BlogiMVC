@@ -1,0 +1,42 @@
+﻿@model MvcApplication18.Models.Blog
+
+@{
+    ViewBag.Title = "Delete";
+       if (!Request.IsAuthenticated)
+    {
+        Response.Redirect("~/Home/ErrorKiri");
+    }
+
+}
+
+<h3>Kustuta -  @Html.DisplayFor(model => model.pealkiri)</h3>
+
+<h3>Olete kindel, et soovite kustutada antud postitust?</h3>
+<fieldset>
+    <legend>@Html.DisplayFor(model => model.pealkiri)</legend>
+
+    <div class="display-label"><u>pealkiri</u></div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.pealkiri)
+    </div>
+
+    <div class="display-label"><u>kuupaev</u></div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.kuupaev).ToString().Substring(0,10)
+    </div>
+
+    <div class="display-label"><u>sisu</u></div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.sisu)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Kustuta lõplikult" />
+        <br />
+        <br />
+        <div class="link">
+        @Html.ActionLink("<- Tagasi", "Index")
+            </div>
+    </p>
+}

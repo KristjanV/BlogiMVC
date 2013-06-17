@@ -1,0 +1,45 @@
+﻿@model IEnumerable<MvcApplication18.Models.Blog>
+
+@{
+    ViewBag.Title = "Blog";
+}
+
+
+
+
+<h3>Blog</h3>
+
+
+@if(Request.IsAuthenticated) {
+  <p class="parem">
+    @Html.ActionLink("Loo uus postitus", "Create")
+</p>
+<div class="clear"></div>
+}
+else {
+ 
+}
+
+
+@foreach (var item in Model.OrderByDescending(item => item.kuupaev))
+{
+    
+    
+    <div class="postitus">
+           <h4>@Html.DisplayFor(modelItem => item.pealkiri)</h4>
+        
+           <span class="kuupaev"> @Html.DisplayFor(modelItem => item.kuupaev).ToString().Substring(0, 10)</span>
+
+            
+       
+           <p class="tekst_postitus"> @Html.DisplayFor(modelItem => item.sisu)</p>
+        
+      
+          
+            
+   </div>
+       
+
+}
+
+

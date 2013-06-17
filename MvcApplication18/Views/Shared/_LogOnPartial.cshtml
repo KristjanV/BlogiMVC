@@ -1,0 +1,7 @@
+﻿@if(Request.IsAuthenticated) {
+    <text>Tere <strong>@User.Identity.Name</strong>!
+    [ @Html.ActionLink("Logi välja", "LogOff", "Account") ]</text>
+}
+else {
+    @:[ @Html.ActionLink("Logi sisse", "LogOn", "Account") ]
+}

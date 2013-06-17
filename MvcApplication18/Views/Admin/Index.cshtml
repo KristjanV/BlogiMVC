@@ -1,0 +1,51 @@
+﻿@model IEnumerable<MvcApplication18.Models.Blog>
+
+@{
+    ViewBag.Title = "Index";
+       if (!Request.IsAuthenticated)
+    {
+        Response.Redirect("~/Home/ErrorKiri");
+    }
+
+}
+
+<h3>Kõik blogi postitused</h3>
+
+ <p class="parem">
+    @Html.ActionLink("Loo uus postitus", "Create")
+</p>
+<div class="clear"></div>
+<table>
+    <tr>
+        <th>
+            pealkiri
+        </th>
+        <th>
+            kuupaev
+        </th>
+        <th>
+            sisu
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.OrderByDescending(item => item.kuupaev))
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.pealkiri)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.kuupaev).ToString().Substring(0, 10)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.sisu)
+        </td>
+        <td class="valikud">
+            @Html.ActionLink("Muuda", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Kustuta", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

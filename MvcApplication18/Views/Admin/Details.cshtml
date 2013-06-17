@@ -1,0 +1,35 @@
+﻿@model MvcApplication18.Models.Blog
+
+@{
+    ViewBag.Title = "Details";
+       if (!Request.IsAuthenticated)
+    {
+        Response.Redirect("~/Home/ErrorKiri");
+    }
+
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Blog</legend>
+
+    <div class="display-label">pealkiri</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.pealkiri)
+    </div>
+
+    <div class="display-label">kuupaev</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.kuupaev)
+    </div>
+
+    <div class="display-label">sisu</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.sisu)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

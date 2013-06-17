@@ -1,0 +1,18 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<div class="esileht">
+
+
+
+@if(Request.IsAuthenticated) {
+   <p>Olete nüüd võimeline lisama, kustutama ja muutma blogi postitusi! Selleks minge Blog lehele!</p>
+}
+else {
+ <p>
+   Tere! Olete Blog süstem lehel!
+</p>
+}
+
+
+    </div>
